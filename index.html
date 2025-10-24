@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>미분방정식 추리게임2</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <link href="img/favicon.ico" rel="icon">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ✅ Carousel Start (바로 시작하도록 수정) -->
+  <div class="container-fluid p-0 mb-5 pb-5">
+    <div id="header-carousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="w-100" src="img/서재사진.png" alt="Image">
+          <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+            <div class="p-10" style="max-width: 900px;">
+              <h4 class="text-white text-uppercase mb-md-5">IASA 미분방정식 수업</h4>
+              <h1 class="display-3 text-white mb-md-4">서재편<br>(서재에 숨겨진 비밀)</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Carousel End -->
+
+
+  <!-- About Start -->
+<div class="container-fluid py-5">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-7">
+        <h1 class="section-title position-relative text-center mb-5">상황 설명</h1>
+      </div>
+    </div>
+
+    <!-- ✅ 한 줄(가로) 구성: 사건 설명 / 사진 / 용의자 -->
+    <div class="row align-items-stretch text-center text-lg-start">
+      
+      <!-- 사건 설명 -->
+      <div class="col-lg-4 col-md-12 py-4 d-flex flex-column justify-content-center">
+        <h4 class="fw-bold mb-3">사건 설명</h4>
+        <p class="text-muted" style="line-height: 1.6;">
+          당신은 유명 르포 작가가 사망했다는 소식을 듣고 바로 사건 현장으로 향합니다.<br>
+          그 집에는 네 명의 고용인이 드나들며 작가의 작업이나 생활을 도와줬다고 합니다.<br>
+          그날도 평소처럼 각자의 일을 시작하기 위해 작가의 집에 도착한 순간, 앞에 아침 식사를 두고 사망한 작가를 발견한 것입니다.<br>
+          과연 범인은 누구일까요?<br>
+          당신은 탐정의 직관을 발휘해서 서재를 조사하기 시작합니다.
+        </p>
+      </div>
+
+      <!-- 사건 사진 -->
+      <div class="col-lg-4 col-md-12 d-flex align-items-center justify-content-center py-4">
+        <div class="position-relative w-100 rounded overflow-hidden bg-light" style="max-width: 400px;">
+          <img 
+            src="img/메인사진.png" 
+            alt="사건 현장 사진" 
+            class="img-fluid" 
+            style="object-fit: contain; width: 100%; height: 100%;"
+          >
+        </div>
+      </div>
+
+      <!-- 용의자 목록 -->
+      <div class="col-lg-4 col-md-12 py-4 d-flex flex-column justify-content-center">
+        <p class="mb-3">탐정이 되어 용의자 4명 중<br>누가 범인인지를 찾아주세요.</p>
+        <h5 class="text-muted mb-2"><i class="fa fa-check text-secondary me-2"></i>용의자1: 가정부 마리아</h5>
+        <h5 class="text-muted mb-2"><i class="fa fa-check text-secondary me-2"></i>용의자2: 요리사 케이란</h5>
+        <h5 class="text-muted mb-2"><i class="fa fa-check text-secondary me-2"></i>용의자3: 정원사 앨버트</h5>
+        <h5 class="text-muted mb-2"><i class="fa fa-check text-secondary me-2"></i>용의자4: 비서 소에</h5>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- About End -->
+
+<!-- ✅ 사건 현장 사진 확인란 -->
+<div class="container-fluid py-5 bg-dark text-white">
+  <div class="container">
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-8 text-center">
+        <h2 class="section-title position-relative mb-3" style="color: white;">사건 현장 사진 확인</h2>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <!-- ✅ v5: data-bs-toggle / data-bs-target -->
+      <a href="#" data-bs-toggle="modal" data-bs-target="#scenePhotoModal">
+        <img src="img/사건현장전체.png"
+             alt="사건 현장 미리보기"
+             class="img-fluid rounded shadow-lg"
+             style="max-width: 700px; cursor: pointer; transition: transform 0.3s;">
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ 확대 모달 (Bootstrap 5) -->
+<div class="modal fade" id="scenePhotoModal" tabindex="-1" aria-labelledby="scenePhotoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-dark text-center">
+      <div class="modal-body p-0">
+        <img src="img/사건현장전체.png" alt="사건 현장 확대 보기" class="img-fluid rounded">
+      </div>
+      <div class="text-end">
+        <button type="button" class="btn btn-light m-3" data-bs-dismiss="modal">닫기</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ 증거 확보 자료 확인란 -->
+<div class="container-fluid py-5 bg-light">
+  <div class="container">
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-8 text-center">
+        <h2 class="section-title position-relative mb-3">증거 확보 자료 확인</h2>
+        <p class="text-muted mb-0">각 증거를 눌러 이미지를 확인하세요.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- 증거 1 -->
+      <div class="col-md-3 mb-4">
+        <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#evidence1">
+          <div class="card border-0 shadow-sm h-100">
+            <img src="img/증거1_라디오.png" class="card-img-top" alt="증거1: 라디오" style="object-fit: cover; height: 220px;">
+            <div class="card-body text-center">
+              <h5 class="card-title mb-2">증거 1</h5>
+              <p class="card-text text-muted mb-0">라디오</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- 증거 2 -->
+      <div class="col-md-3 mb-4">
+        <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#evidence2">
+          <div class="card border-0 shadow-sm h-100">
+            <img src="img/증거2_업무 게시판.png" class="card-img-top" alt="증거2: 업무 게시판" style="object-fit: cover; height: 220px;">
+            <div class="card-body text-center">
+              <h5 class="card-title mb-2">증거 2</h5>
+              <p class="card-text text-muted mb-0">업무 게시판</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- 증거 3 -->
+      <div class="col-md-3 mb-4">
+        <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#evidence3">
+          <div class="card border-0 shadow-sm h-100">
+            <img src="img/증거3_책장.png" class="card-img-top" alt="증거3: 책장" style="object-fit: cover; height: 220px;">
+            <div class="card-body text-center">
+              <h5 class="card-title mb-2">증거 3</h5>
+              <p class="card-text text-muted mb-0">책장</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- 증거 4 -->
+      <div class="col-md-3 mb-4">
+        <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#evidence4">
+          <div class="card border-0 shadow-sm h-100">
+            <img src="img/증거4_책.png" class="card-img-top" alt="증거4: 책" style="object-fit: cover; height: 220px;">
+            <div class="card-body text-center">
+              <h5 class="card-title mb-2">증거 4</h5>
+              <p class="card-text text-muted mb-0">책</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ 증거 1 모달 -->
+<div class="modal fade" id="evidence1" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header border-0">
+        <h5 class="modal-title">증거 1: 주변 사진</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center" style="max-height: 80vh; overflow-y: auto;">
+        <img src="img/증거1_라디오1.png" class="img-fluid rounded mb-4" alt="증거1 사진 1">
+        <img src="img/증거1_라디오2.png" class="img-fluid rounded mb-4" alt="증거1 사진 2">
+        <img src="img/증거1_라디오3.png" class="img-fluid rounded mb-4" alt="증거1 사진 3">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ 증거 2 모달 -->
+<div class="modal fade" id="evidence2" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header border-0">
+        <h5 class="modal-title">증거 2: 사건 현장 사진</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <img src="img/증거2_업무 게시판.png" class="img-fluid rounded" alt="증거2: 사건 현장 사진">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ 증거 3 모달 -->
+<div class="modal fade" id="evidence3" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header border-0">
+        <h5 class="modal-title">증거 3: 피해자의 비행기표</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <img src="img/증거3_책장.png" class="img-fluid rounded" alt="증거3: 피해자의 비행기표">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ 증거 4 모달 -->
+<div class="modal fade" id="evidence4" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header border-0">
+        <h5 class="modal-title">증거 4: 지문 분석 결과</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <img src="img/증거4_책.png" class="img-fluid rounded" alt="증거4: 지문 분석 결과">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ 반드시 포함: Bootstrap 5 JS (jQuery 불필요) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>책장의 비밀</title>
+
+  <!-- ✅ Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+  <!-- ✅ 책장의 비밀 -->
+  <div class="container-fluid py-5 bg-white">
+    <div class="container">
+      <div class="row justify-content-center mb-4">
+        <div class="col-lg-8 text-center">
+          <h2 class="section-title position-relative mb-3">책장의 비밀</h2>
+          <p class="text-muted mb-0">
+            책장 뒤에 있는 비밀의 방으로 들어가려면 비밀번호를 찾아야합니다.<br>
+            증거 확보 자료에서 단서를 찾아 책장 뒤에 있는 비밀의 방으로 들어가는 비밀번호를 찾아주세요.<br>
+            책장 뒤에는 결정적인 힌트가 숨겨져 있습니다.
+          </p>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+          <form id="bookshelfGate" class="card shadow-sm border-0">
+            <div class="card-body">
+              <label for="secretCode" class="fw-bold mb-2">비밀번호 입력</label>
+              <div class="input-group">
+                <input
+                  type="password"
+                  inputmode="numeric"
+                  pattern="\d*"
+                  class="form-control"
+                  id="secretCode"
+                  placeholder="숫자 10자리를 입력하세요"
+                  maxlength="10"
+                  aria-describedby="codeHelp"
+                  required
+                >
+                <button class="btn btn-primary" type="submit">열기</button>
+              </div>
+              <small id="codeHelp" class="form-text text-muted mt-2">
+                힌트: 위의 증거들 속에 숨어 있어요.
+              </small>
+              <div id="codeFeedback" class="text-danger small mt-2 d-none">
+                비밀번호가 올바르지 않습니다.
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ 비밀번호 정답 시 뜨는 모달 -->
+  <div class="modal fade" id="secretRoomModal" tabindex="-1" aria-labelledby="secretRoomLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-header bg-dark text-white">
+          <h5 class="modal-title" id="secretRoomLabel">비밀의 방 단서</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="닫기"></button>
+        </div>
+        <div class="modal-body text-center bg-light">
+          <img src="img/비밀의방사진.png" alt="비밀의 방 단서" class="img-fluid rounded shadow-sm">
+          <p class="text-muted small mt-2">책장 뒤에 숨겨진 단서 사진입니다.</p>
+        </div>
+        <div class="modal-footer bg-light">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- ✅ 비밀번호 검사 스크립트 -->
+  <script>
+    (function () {
+      const form = document.getElementById('bookshelfGate');
+      const input = document.getElementById('secretCode');
+      const feedback = document.getElementById('codeFeedback');
+      const SECRET = '2764435294'; // ← 정답 비밀번호
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const val = (input.value || '').trim();
+
+        if (val === SECRET) {
+          feedback.classList.add('d-none');
+
+          // ✅ Bootstrap 5 모달 표시
+          const modalEl = document.getElementById('secretRoomModal');
+          const modal = new bootstrap.Modal(modalEl);
+          modal.show();
+
+          input.value = '';
+        } else {
+          feedback.classList.remove('d-none');
+          input.focus();
+          input.select();
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Testimonial (제출 안내) -->
+<div class="container-fluid py-5 d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+  <div class="container text-center">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <h1 class="section-title position-relative text-center mb-5">
+          증거 확보 내용을 <br>조사하여<br> 최종 범인을 찾아서 제출해주세요.
+          <br>
+          <span style="font-size: 0.5em; line-height: 1.6;">
+            특히, 결정적 단서는 책장 안에 숨겨져 있습니다. <br>
+            책장의 비밀을 찾아야 범인을 찾을 수 있으니, <br>
+            책장에 숨겨진 비밀을 반드시 찾아 범인을 색출해주세요.
+          </span>
+        </h1>
+
+        <a href="https://forms.gle/Xn9oSkk6ukPFxm7X9" target="_blank" rel="noopener" class="btn btn-primary px-4 py-2">
+          제출 페이지 열기
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<a href="#" class="btn btn-secondary px-2 back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
